@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        *{
+            width: 100wh;
+        }
         p::first-letter{
             font-size: 32px;
         }
@@ -12,14 +15,81 @@
             display: flex;
             gap: 20px;
         }
+        div li{
+            height: 20px;
+            width: 20px;
+            background-color: aqua;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #content > div {
+            background-color: orangered;
+            height: 100px;
+            width: 170px;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        #content {
+            height: 400px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
     </style>
 </head>
 <body>
+
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa quasi aliquid quis ratione temporibus sit itaque deserunt necessitatibus delectus mollitia. Aut, doloribus vero. Corporis quibusdam nostrum obcaecati asperiores porro culpa?</p>
     <div>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa quasi aliquid quis ratione temporibus sit itaque deserunt necessitatibus delectus mollitia. Aut, doloribus vero. Corporis quibusdam nostrum obcaecati asperiores porro culpa?</p>
         <p style="text-align: center;" >Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa quasi aliquid quis ratione temporibus sit itaque deserunt necessitatibus delectus mollitia. Aut, doloribus vero. Corporis quibusdam nostrum obcaecati asperiores porro culpa?</p>
         <p style="text-align: right;" >Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa quasi aliquid quis ratione temporibus sit itaque deserunt necessitatibus delectus mollitia. Aut, doloribus vero. Corporis quibusdam nostrum obcaecati asperiores porro culpa?</p>
+    </div>
+
+    <ul>
+        <li id="1" onclick="createList(this.id)">
+            list
+        </li>
+    </ul>
+
+    <script>
+        function createList (id) {
+            let ele = document.getElementById(id)
+            let ul = document.createElement('ul')
+            let li = document.createElement('li')
+            li.innerText = 'list'
+            li.setAttribute("id", Number(id)+1);
+            li.addEventListener('click', createList);
+            ul.appendChild(li)
+            ele.appendChild(ul)
+        }
+    </script>
+    <div id="content">
+
+        <div style="align-self: flex-start;">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </div>
+
+        <div style="align-self: center;">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </div>
+
+        <div style="align-self: flex-end;">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </div>
+
     </div>
 </body>
 </html>
